@@ -7,7 +7,7 @@
        ansible.builtin.debug:
         msg: Value of URL is {{ URL }}
 
-     - name: Printing value of the variable
+     - name: Demo to show the Local variable
        ansible.builtin.debug:
         msg: Value of URL is {{ URL }}
        vars: 
