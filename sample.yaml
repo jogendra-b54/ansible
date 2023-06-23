@@ -3,14 +3,15 @@
   tasks:
     - name: Printing Hello from Play1
       ansible.builtin.debug:
-        msg: Hello From play1 of task1
-    - name: Printing Hello from Play1
+        msg: Haai From play1 of task1
+
+    - name: Printing Hi from Play1
       ansible.builtin.debug:
-        msg: Hello From play1 of task2
+        msg: Haai  From play1 of task2
 
 - name: play2
   hosts: prod
   tasks:
-    - name: Printing Hello from Play1
+    - name: Printing Hai from Play2
       ansible.builtin.debug:
-        msg: Hello From play1 of task1  
+        msg: Hello From play2 of task1  
