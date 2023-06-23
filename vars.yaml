@@ -7,8 +7,4 @@
       ansible.builtin.debug:
       msg: value of URL is  {{ URL }}
 
-    - name: Demo to show local variables
-      ansible.builtin.debug:
-        msg: value of URL is  {{ URL }}
-      vars:                                   # local variables 
-        URL: play.google.com
+    
