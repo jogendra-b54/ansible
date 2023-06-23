@@ -5,6 +5,9 @@
       ansible.builtin.debug:
         msg: Hello From play1 of task1
 
+- name: play2
+  hosts: prod
+  tasks:
     - name: Printing Hello from Play1
       ansible.builtin.debug:
         msg: Hello From play1 of task1
