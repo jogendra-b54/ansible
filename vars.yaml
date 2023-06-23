@@ -12,3 +12,8 @@
         msg: Value of URL is {{ URL }}
        vars: 
          URL: task.google.com
+
+     - name: Printing the value of the variable which is not declared
+       ansible.builtin.debug:
+        msg: Value of car is {{ CARNAME }}
+       
