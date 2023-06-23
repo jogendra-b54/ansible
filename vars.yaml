@@ -1,27 +1,27 @@
 - name: Demo on using variables on playbooks
   hosts: all
-  vars:                           #Global variable: variables can be accessed by all the tasks of the play
+  vars: #Global variable: variables can be accessed by all the tasks of the play
     URL: play.google.com
-  vars_files:             # include varible values from others yaml files outside
+  vars_files: # include varible values from others yaml files outside
     - dev-vars.yaml
-  vars_prompt:            # to get the user prompt
-    - name: URLNAME      
+  vars_prompt: # to get the user prompt
+    - name: URLNAME
       prompt: ENter the URL Name
-      private: No                           # private values is required to supply when you want to display the prompt values
-  tasks: 
-     - name: Printing value of the variable
-       ansible.builtin.debug:
+      private: No # private values is required to supply when you want to display the prompt values
+  tasks:
+    - name: Printing value of the variable
+      ansible.builtin.debug:
         msg: Value of URL is {{ URL }}
 
-     - name: Demo to show the Local variable
-       ansible.builtin.debug:
+    - name: Demo to show the Local variable
+      ansible.builtin.debug:
         msg: Value of URL is {{ URL }}
-       vars: 
-         URL: task.google.com
+      vars:
+        URL: task.google.com
 
     #  - name: Printing the value of the variable which is not declared
     #    ansible.builtin.debug:
     #     msg: Value of car is {{ CARNAME }}
-     - name: Printing the Prompt variables
-       ansible.builtin.debug:
-        msg: Url from the prompt variable is  {{ URLNAME }}  
+    - name: Printing the Prompt variables
+      ansible.builtin.debug:
+        msg: Url from the prompt variable is  {{ URLNAME }}

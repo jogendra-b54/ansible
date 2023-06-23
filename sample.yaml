@@ -14,4 +14,4 @@
   tasks:
     - name: Printing Hai from Play2
       ansible.builtin.debug:
-        msg: Hello From play2 of task1  
+        msg: Hello From play2 of task1
