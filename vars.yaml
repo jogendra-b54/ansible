@@ -3,8 +3,8 @@
   vars:                           #Global variable: variables can be accessed by all the tasks of the play
     URL: play.google.com
   tasks: 
-    - name: Printing value of the variable
-      ansible.builtin.debug:
-      msg: value of URL is  {{ URL }}
+     - name: Printing Hello from Play1
+       ansible.builtin.debug:
+        msg: Haai From play1 of task1
 
     
