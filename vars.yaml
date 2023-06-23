@@ -2,11 +2,12 @@
   hosts: all
   vars:                           #Global variable: variables can be accessed by all the tasks of the play
     URL: play.google.com
-  vars_files:
+  vars_files:             # include varible values from others yaml files outside
     - dev-vars.yaml
-  vars_prompt:
-    - name: URLNAME
+  vars_prompt:            # to get the user prompt
+    - name: URLNAME      
       prompt: ENter the URL Name
+      private: No                           # private values is required to supply when you want to display the prompt values
   tasks: 
      - name: Printing value of the variable
        ansible.builtin.debug:
