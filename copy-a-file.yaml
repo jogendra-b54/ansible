@@ -1,0 +1,8 @@
+- name:  Demo using copy file operation
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copying the systemd file
+      ansible.builtin.copy:
+        src: systemd.txt                  # src always be in the local jenkins server
+        dest: /home/centos/systemd.txt                 # destination has to be a node server
