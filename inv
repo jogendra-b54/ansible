@@ -1,7 +1,7 @@
 [frontend]
 172.31.95.175
 
-[Mongodb]
+[mongodb]
 172.31.83.11
 
 [catalogue]
