@@ -6,17 +6,17 @@
        msg: Installing frontend
 
     - name: This is a user task
-       ansible.builtin.debug:
+      ansible.builtin.debug:
         msg: Installing user 
       
     - name: Starting user
-       ansible.builtin.debug:
+      ansible.builtin.debug:
         msg: Starting user
 
     - name: This is a cart task
-       ansible.builtin.debug:
+      ansible.builtin.debug:
         msg: Installing cart
       
     - name: Starting cart
-       ansible.builtin.debug:
+      ansible.builtin.debug:
         msg: Starting cart
