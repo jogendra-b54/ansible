@@ -1,0 +1,3 @@
+  - name: Printing Hello from MongoDB
+    ansible.builtin.debug:
+      msg: Haai From MongodB
