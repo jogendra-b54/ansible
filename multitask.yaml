@@ -1,6 +1,6 @@
 - name: Demo on using mutitasking
   hosts: all
-   tasks:
+  tasks:
     - name: This is a frontend task
       ansible.builtin.debug:
        msg: Installing frontend
