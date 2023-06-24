@@ -3,7 +3,7 @@
        name: nginx
        state: present
 
-     - name: starting nginx
+    - name: starting nginx
       ansible.builtin.systemd:
        name: nginx
        state: started
