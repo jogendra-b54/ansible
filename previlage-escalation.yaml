@@ -1,5 +1,6 @@
 - name:  Demonstrating Previlage escalation
   hosts: all
+  become: yes                       # Previlage escalation Runs the playbooks as root user
   tasks:
     - name: Checking the user id
       ansible.builtin.shell: id 
