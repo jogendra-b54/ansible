@@ -1,13 +1,9 @@
-- name: Demo on using Multitask
+- name: Demo on using mutitasking
   hosts: all
-  tasks: 
-     - name: This is a frontend task 
-       ansible.builtin.debug:
-        msg: Installing frontend
-      
-     - name: Starting frontend 
-       ansible.builtin.debug:
-        msg: Starting frontend
+   tasks:
+    - name: This is a frontend task
+      ansible.builtin.debug:
+       msg: Installing frontend
 
     #  - name: This is a user task
     #    ansible.builtin.debug:
