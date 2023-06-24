@@ -1,0 +1,19 @@
+#- name:  Demo on using Erros
+- name: Check Tomcat is running or not and start  if it is not running 
+  hosts: all
+  tasks:
+    - name: Cheking Tomcat status
+      ansible.builtin.shell: ps -ef | grep  java | grep -v grep
+      register: OUT
+
+    - name: Starting Tomcat
+      ansible.builtin.debug:
+        msg: Starting Tomcat
+    
+    - name: Declaring the variable
+      set_fact:
+        STATUSCODE: " {{ OUT.rc }} "
+
+    - name: Printing the uptime command exit code
+      ansible.builtin.debug: 
+        msg: Uptime command exit code is {{STATUSCODE}}
