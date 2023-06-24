@@ -1,6 +1,5 @@
 - name:  Demo using copy file operation
   hosts: all
-  become: yes
   tasks:
     - name: Copying the systemd file
       ansible.builtin.copy:
