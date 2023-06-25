@@ -7,3 +7,17 @@
     ansible.builtin.package:
      name: mongodb-org
      state: present 
+
+# ansible.builtin.replace module – Replace all instances of a particular string in a file using a back-referenced regular expression
+
+  - name: Updating the MongoDB config to be public
+    ansible.builtin.replace:
+    path: /etc/mongodb.config
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+  - name: starting mongodb
+    ansible.builtin.systemd:
+      name: mongod
+      state: started
+      enabled: true
