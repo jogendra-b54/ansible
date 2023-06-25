@@ -33,7 +33,8 @@
   - name: Injecting the MongoDB Catalogue schema
     community.mongodb.mongodb_shell:
       file: "/tmp/{{COMPONENT}}-main/catalogue.js"
-       - name: Configuring the  mongodb Repository
+
+  - name: Configuring the  mongodb Repository
     ansible.builtin.copy:
       src: mongodb.repo
       dest: /etc/yum.repos.d/mongodb.repo
