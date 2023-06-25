@@ -68,7 +68,7 @@
  
   - name: Injecting the MongoDB Catalogue schema
     community.mongodb.mongodb_shell:
-      file: "/tmp/{COMPONENT}-main/catalogue.js"
+      file: "/tmp/{{COMPONENT}}-main/catalogue.js"
       idempotent: yes
 
 
