@@ -23,6 +23,6 @@
 # if the source you are trying to copy on the remote machine , ensure to give the remote_src=yes      
     - name: starting nginx
       ansible.builtin.systemd:
-       name: nginx
-       state: started
-       enabled: true
+      name: nginx
+      state: started
+      enabled: true
