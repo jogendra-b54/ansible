@@ -32,11 +32,15 @@
 #
   - name: Injecting the MongoDB Catalogue schema
     community.mongodb.mongodb_shell:
-      file: "/tmp/{{COMPONENT}}-main/catalogue.js"
+      file: "/tmp/{{COMPONENT}}-main/{{ item }}.js"
       idempotent: yes
+    loop:
+      - catalogue
+      - users
 
 
-  - name: Injecting the MongoDB User schema
-    community.mongodb.mongodb_shell:
-     file: "/tmp/{{COMPONENT}}-main/users.js"
-     idempotent: yes
+
+  # - name: Injecting the MongoDB User schema
+  #   community.mongodb.mongodb_shell:
+  #    file: "/tmp/{{COMPONENT}}-main/users.js"
+  #    idempotent: yes
