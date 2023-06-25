@@ -11,8 +11,9 @@
 
     - name: Cleanup of old HTML Content
       ansible.builtin.file:
-      state: absent
       path: /usr/share/nginx/html/
+      state: absent
+      
 
     - name: Copy the frontend Component which is downloaded on the remote machine nginx path
       ansible.builtin.copy:
