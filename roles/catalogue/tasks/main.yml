@@ -7,7 +7,12 @@
       name: nodejs
       state: present
 
+# Creating a user account in Ansible
 
+  - name: Creating roboshop user account
+    ansible.builtin.user:
+     name: {{ APPUSER }}
+     comment: Roboshop Application user 
     
 #   - name: Installing nginx 
 #     ansible.builtin.package:
