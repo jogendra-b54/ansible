@@ -1,28 +1,28 @@
-    - name: Installing nginx 
-      ansible.builtin.package:
-       name: nginx
-       state: present
+  - name: Installing nginx 
+    ansible.builtin.package:
+     name: nginx
+     state: present
 
-    - name: Download and extracting the Component
-      ansible.builtin.unarchive:
-       src: https://github.com/stans-robot-project/frontend/archive/main.zip 
-       dest: /tmp
-       remote_src: yes
+  - name: Download and extracting the Component
+    ansible.builtin.unarchive:
+      src: https://github.com/stans-robot-project/frontend/archive/main.zip 
+      dest: /tmp
+      remote_src: yes
 
-    - name: Cleanup of old HTML Content
-      ansible.builtin.file:
-      path: /usr/share/nginx/html/
-      state: absent
+  - name: Cleanup of old HTML Content
+    ansible.builtin.file:
+     path: /usr/share/nginx/html/
+     state: absent
       
 
-    - name: Copy the frontend Component which is downloaded on the remote machine nginx path
-      ansible.builtin.copy:
+  - name: Copy the frontend Component which is downloaded on the remote machine nginx path
+    ansible.builtin.copy:
       src: /tmp/frontend-main/static/
       dest: /usr/share/nginx/html/
       remote_src: yes
 # if the source you are trying to copy on the remote machine , ensure to give the remote_src=yes      
-    - name: starting nginx
-      ansible.builtin.systemd:
+  - name: starting nginx
+    ansible.builtin.systemd:
       name: nginx
       state: started
       enabled: true
