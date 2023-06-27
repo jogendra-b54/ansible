@@ -28,7 +28,8 @@
     ansible.builtin.template:
       src: roboshop.conf
       dest: /etc/nginx/default.d/roboshop.conf
-      remote_src: yes   
+      remote_src: yes  
+    notify: Retarting Nginx 
 
 
   - name: starting nginx
