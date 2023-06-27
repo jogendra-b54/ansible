@@ -9,7 +9,7 @@
   #     dest: /tmp
   #     remote_src: yes
 
-  - name: Download and Extract frontend 
+ - name: Download and Extract frontend 
     ansible.builtin.include_role:
      name: common
      task_from: download
