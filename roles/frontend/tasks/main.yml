@@ -4,7 +4,7 @@
      state: present
 
   - name: Download and extracting the frontend  
-    ansible.builtin.include_roles:
+    ansible.builtin.include_role:
       name: common
       tasks_from: download
  
