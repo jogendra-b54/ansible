@@ -9,7 +9,7 @@
   - name: Performing  ${{COMPONENT}} cleanUp
     ansible.builtin.file:
      path: /home/{{APPUSER}}/{{COMPONENT}}
-     state: absent
+     state: absent  
     ignore_errors: yes
      
 
