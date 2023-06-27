@@ -10,7 +10,7 @@
   #     remote_src: yes
   -  name: Download and Extract frontend 
      ansible.builtin.include_role:
-     name: common
+      name: common
      task_from: download
  
   - name: Cleanup of old HTML Content
