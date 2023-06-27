@@ -15,3 +15,10 @@
     - name: Printing Hai from Play2
       ansible.builtin.debug:
         msg: Hello From play2 of task1
+
+
+- name: play2
+  hosts: prod
+  task: Haai
+    - name: Ths is a frma
+      ansible.builtin.un
