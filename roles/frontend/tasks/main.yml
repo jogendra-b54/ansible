@@ -26,7 +26,7 @@
 # if the source you are trying to copy on the remote machine , ensure to give the remote_src=yes      
   - name: Copying the proxy config
     ansible.builtin.template:
-      src: ./roboshop.conf
+      src: roboshop.conf
       dest: /etc/nginx/default.d/roboshop.conf
       remote_src: yes  
  #   notify: Retarting Nginx 
