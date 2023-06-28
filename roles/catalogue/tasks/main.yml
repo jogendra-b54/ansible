@@ -38,5 +38,5 @@
       enabled: true
       daemon_reload: true
 
- - name: configuring Node name Repo
-   ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
+#  - name: configuring Node name Repo
+#    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
