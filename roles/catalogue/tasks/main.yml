@@ -21,6 +21,7 @@
      name: common
      tasks_from: download
 
-
-
+ - name: Generating artifact with npm install
+   ansible.general.npm:
+      path: /home/{{APPUSER}}/{{COMPONENT}}/
 
