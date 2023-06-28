@@ -23,5 +23,5 @@
 
  - name: Generating artifact with npm install
    ansible.general.npm:
-      path: /home/{{APPUSER}}/{{COMPONENT}}/
+      path: /home/{{ APPUSER }}/{{ COMPONENT }}/
 
