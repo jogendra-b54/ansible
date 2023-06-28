@@ -36,7 +36,7 @@
       name: catalogue
       state: restarted
       enabled: true
-      #daemon_reload: true
+      daemon_reload: true
 
 #  - name: configuring Node name Repo
 #    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
