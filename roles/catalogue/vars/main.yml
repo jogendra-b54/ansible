@@ -1,3 +1,2 @@
 COMPONENT: catalogue
 APPUSER: roboshop
-ENV: ${{ENV}}
