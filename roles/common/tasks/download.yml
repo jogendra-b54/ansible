@@ -19,5 +19,3 @@
          group: "{{APPUSER}}"
          remote_src: yes
     ignore_errors: yes
-        
-    
