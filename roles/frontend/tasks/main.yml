@@ -21,6 +21,8 @@
       dest: /usr/share/nginx/html/
       remote_src: yes
 
+  - name: configuring Node name Repo
+    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
   
 
 # if the source you are trying to copy on the remote machine , ensure to give the remote_src=yes      
