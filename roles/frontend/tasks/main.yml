@@ -35,10 +35,10 @@
 
  #   notify: Retarting Nginx 
 
-  - name: starting nginx
+  - name: Starting nginx
     ansible.builtin.systemd:
       name: nginx
-      state: started
+      state: restarted
       enabled: true
 
   # - name: Restarting nginx
