@@ -37,7 +37,7 @@
 
   - name: Starting {{COMPONENT}}
     ansible.builtin.systemd:
-      name: nginx
+      name: {{COMPONENT}}
       state: restarted
       enabled: true
 
