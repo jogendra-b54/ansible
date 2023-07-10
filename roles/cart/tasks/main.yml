@@ -30,7 +30,7 @@
    ansible.builtin.template:
       src: systemd.service
       dest: /etc/systemd/system/{{COMPONENT}}.service
-      remote_src: yes
+ #     /remote_src: yes
        
  - name: Restarting {{COMPONENT}}
    ansible.builtin.systemd:
