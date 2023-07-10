@@ -1,0 +1,28 @@
+ - name: Installing Maven  on  {{COMPONENT}}-{{ENV}} server
+   ansible.builtin.package:
+      name: maven
+      state: present
+
+
+ - name: Creating App user 
+   ansible.builtin.include_role:
+     name: common
+     tasks_from: create_user 
+
+
+ - name: Download and Extracting the {{ COMPONENT }} 
+   ansible.builtin.include_role:
+     name: common
+     tasks_from: download
+
+
+# - name: Generating {{COMPONENT}} artifacts 
+#   ansible.builtin.shell: cd /home/{{APPUSER}}/{{COMPONENT}}/  &&  mvn clean package
+  
+  # you can use the "args" chdir instead of using cd /home/{{APPUSER}}/{COMPONENT} &&  mvn clean package
+  #   args:
+  #        chdir: somedir /
+ - name: Generating {{COMPONENT}} artifacts 
+   ansible.builtin.shell: mvn clean package
+   args:
+     chdir: /home/{{APPUSER}}/{{COMPONENT}}//

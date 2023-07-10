@@ -1,0 +1,6 @@
+# Creating a user account in Ansible
+
+ - name: Creating App user for {{COMPONENT}}-{{ENV}} server
+   ansible.builtin.user:
+     name: "{{ APPUSER }}"
+     comment: Roboshop Application user 
