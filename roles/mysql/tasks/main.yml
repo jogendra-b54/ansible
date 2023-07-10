@@ -22,14 +22,27 @@
     register: mysql_pwd_log
 
 
-  - name: Grep the password and assign it to  a variable
-    ansible.builtin.set_fact:
-        DEFAULT_PASSWORD: "{{ mysql_pwd_log['content'] | b64decode | regex_findall('.*temporary password.*') | join (' ') | split (' ') | last }}"
-    
+# Rescue and Blocks work together ; Tasks in rescue will only be excuted if the task in the block fails
+  - name : Validate the Default password
+    block:
+       - name: Get MySQL version with non-default credentials
+         community.mysql.mysql_info:
+            login_user: root
+            login_password: RoboShop@1
+            filter: version
+       - name : Mysql Connection validation succesful       
+         ansible.builtin.debug:
+            msg: Mysql successfully connected ; No need to change the DEFAULT PASSWORD
+    rescue:
+        - name: Grep the password and assign it to  a variable
+          ansible.builtin.set_fact:
+            DEFAULT_PASSWORD: "{{ mysql_pwd_log['content'] | b64decode | regex_findall('.*temporary password.*') | join (' ') | split (' ') | last }}"
 
-  - name: Reset {{COMPONENT}}  Default root password
-    ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
-
+        - name: Reset {{COMPONENT}}  Default root password
+          ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+        - name : Mysql default root password changed succesful       
+          ansible.builtin.debug:
+            msg: Mysql root passowrd has been changed and reset
   # - name: Printing the password
   #   ansible.builtin.debug:
   #       msg: "{{DEFAULT_PASSWORD}}"
@@ -37,6 +50,25 @@
 
   - name: Configuring Node name Repo
     ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
+
+
+  #     block:
+  #    - name: Print a message
+  #      ansible.builtin.debug:
+  #        msg: 'I execute normally'
+
+  #    - name: Force a failure
+  #      ansible.builtin.command: /bin/false
+
+  #    - name: Never print this
+  #      ansible.builtin.debug:
+  #        msg: 'I never execute, due to the above task failing, :-('
+  #  rescue:
+  #    - name: Print when errors
+  #      ansible.builtin.debug:
+  #        msg: 'I caught an error, can do stuff here to fix it, :-)'
+
+
 #   - name: Download and Extract mongod 
 #     ansible.builtin.include_role:
 #      name: common
