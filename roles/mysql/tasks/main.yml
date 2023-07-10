@@ -1,7 +1,7 @@
   - name: Configuring the  {{COMPONENT}} Repository
     ansible.builtin.copy:
       src: mysql.repo
-      dest: /etc/yum.repos.d/mongodb.repo
+      dest: /etc/yum.repos.d/mysql.repo
 
   - name: Installing {{COMPONENT}} 
     ansible.builtin.package:
@@ -16,7 +16,9 @@
       state: started
       enabled: true
 
-  
+        
+  - name: Configuring Node name Repo
+    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
 #   - name: Download and Extract mongod 
 #     ansible.builtin.include_role:
 #      name: common

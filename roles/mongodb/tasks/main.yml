@@ -38,7 +38,9 @@
       - users
 
 
-
+      
+  - name: Configuring Node name Repo
+    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
   # - name: Injecting the MongoDB User schema
   #   community.mongodb.mongodb_shell:
   #    file: "/tmp/{{COMPONENT}}-main/users.js"
