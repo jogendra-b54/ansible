@@ -1,16 +1,16 @@
-  - name: Configuring the  {{COMPONENT}} Repository
+  - name: Configuring the  {{ COMPONENT }} Repository
     ansible.builtin.copy:
       src: mysql.repo
-      dest: /etc/yum.repos.d/{{COMPONENT}}.repo
+      dest: /etc/yum.repos.d/{{ COMPONENT }}.repo
 
-  - name: Installing {{COMPONENT}} 
+  - name: Installing {{ COMPONENT }} 
     ansible.builtin.package:
      name: mysql-community-server
      state: present 
 
 
 
-  - name: starting {{COMPONENT}}
+  - name: starting {{ COMPONENT }}
     ansible.builtin.systemd:
       name: mysqld
       state: started
@@ -46,24 +46,24 @@
 
     
   - name: Configuring Node name Repo
-    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
+    ansible.builtin.shell: set-hostname {{ COMPONENT }}-{{ENV}}
 
 
   
 
 
-  - name: Download and Extract {{COMPONENT}} schema 
+  - name: Download and Extract {{ COMPONENT }} schema 
     ansible.builtin.include_role:
      name: common
      tasks_from: download
 
 
 
-  - name: Injecting the {{COMPONENT}} Schema
+  - name: Injecting the {{ COMPONENT }} Schema
     community.mysql.mysql_db:
       state: import
       name: all
-    target: /tmp/{{ COMPONENT }}-main/{{COMPONENT}}.sql
+    target: /tmp/{{ COMPONENT }}-main/{{ COMPONENT }}.sql
     login_user: root
     login_password: RoboShop@1 
 
