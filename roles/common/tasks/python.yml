@@ -22,16 +22,17 @@
      tasks_from: download
 
 
-- name: Just Fetching the output
-  ansible.builtin.shell: id roboshop
-  register: OUTPUT
+- name: Updating the UID in the {{COMPONENT}}.ini file
+  ansible.builtin.lineinfile:
+      path: /etc/selinux/config
+      regexp: '^uid'
+      line: uid = {{OUT.uid}}
 
-
-
-
-- name: Ensure SELinux is set to enforcing mode
-  winuser
-      path: /home/{{APPUSER}}/{{COMPONENT}}/
+- name: Updating the GID in the {{COMPONENT}}.ini file
+  ansible.builtin.lineinfile:
+      path: /etc/selinux/config
+      regexp: '^gid'
+      line: gid = {{OUT.group}}
 
 
 #  - name: Configuring Service 
