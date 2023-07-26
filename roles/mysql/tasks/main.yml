@@ -59,13 +59,11 @@
 
 
 
-  - name: Injecting the  Catalogue schema
-    community.mongodb.mongodb_shell:
-      file: "/tmp/{{COMPONENT}}-main/{{ item }}.js"
-      idempotent: yes
-    loop:
-      - catalogue
-      - users
-
-
+  - name: Injecting the {{COMPONENT}} Schema
+    community.mysql.mysql_db:
+      state: import
+      name: all
+    target: /tmp/{{COMPONENT}}-main/{{COMPONENT}}.sql
+    login_user: root
+    login_password: RoboShop@1 
 
