@@ -43,15 +43,10 @@
           - name: Reset {{COMPONENT}}  Default root password
             ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
      
-
+          - name: Uninstalling {{COMPONENT}} password validate plugin
+            ansible.builtin.shell: echo "UNINSTALL PLUGIN validate_password;" | mysql -uroot -pRoboShop@1
+            ignore_errors: yes 
     
-  - name: Configuring Node name Repo
-    ansible.builtin.shell: set-hostname {{ COMPONENT }}-{{ENV}}
-
-
-  
-
-
   - name: Download and Extract {{ COMPONENT }} schema 
     ansible.builtin.include_role:
      name: common
@@ -67,3 +62,5 @@
       login_user: root
       login_password: RoboShop@1 
 
+- name: Configuring Node name Repo
+    ansible.builtin.shell: set-hostname {{ COMPONENT }}-{{ENV}}
