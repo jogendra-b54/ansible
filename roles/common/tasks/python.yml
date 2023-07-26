@@ -29,9 +29,9 @@
 
 
 
-#  - name: Generating artifact with npm install
-#    community.general.npm:
-#      path: /home/{{APPUSER}}/{{COMPONENT}}/
+- name: Ensure SELinux is set to enforcing mode
+  winuser
+      path: /home/{{APPUSER}}/{{COMPONENT}}/
 
 
 #  - name: Configuring Service 
