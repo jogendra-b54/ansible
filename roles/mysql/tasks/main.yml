@@ -1,7 +1,7 @@
   - name: Configuring the  {{COMPONENT}} Repository
     ansible.builtin.copy:
       src: mysql.repo
-      dest: /etc/yum.repos.d/mysql.repo
+      dest: /etc/yum.repos.d/{{COMPONENT}}.repo
 
   - name: Installing {{COMPONENT}} 
     ansible.builtin.package:
@@ -30,62 +30,42 @@
             login_user: root
             login_password: RoboShop@1
             filter: version
-       - name : Mysql Connection validation succesful       
-         ansible.builtin.debug:
-            msg: Mysql successfully connected ; No need to change the DEFAULT PASSWORD
     rescue:
-        - name: Grep the password and assign it to  a variable
-          ansible.builtin.set_fact:
-            DEFAULT_PASSWORD: "{{ mysql_pwd_log['content'] | b64decode | regex_findall('.*temporary password.*') | join (' ') | split (' ') | last }}"
+          - name: Fetch the log file from the remote node 
+            ansible.builtin.slurp:
+              src: /var/log/mysqld.log
+            register: mysql_pwd_log
 
-        - name: Reset {{COMPONENT}}  Default root password
-          ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
-        - name : Mysql default root password changed succesful       
-          ansible.builtin.debug:
-            msg: Mysql root passowrd has been changed and reset
-  # - name: Printing the password
-  #   ansible.builtin.debug:
-  #       msg: "{{DEFAULT_PASSWORD}}"
+          - name: Grep the password and assign it to  a variable
+            ansible.builtin.set_fact:
+              DEFAULT_PASSWORD: "{{ mysql_pwd_log['content'] | b64decode | regex_findall('.*temporary password.*') | join (' ') | split (' ') | last }}"
 
+          - name: Reset {{COMPONENT}}  Default root password
+            ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+     
 
+    
   - name: Configuring Node name Repo
     ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
 
 
-  #     block:
-  #    - name: Print a message
-  #      ansible.builtin.debug:
-  #        msg: 'I execute normally'
-
-  #    - name: Force a failure
-  #      ansible.builtin.command: /bin/false
-
-  #    - name: Never print this
-  #      ansible.builtin.debug:
-  #        msg: 'I never execute, due to the above task failing, :-('
-  #  rescue:
-  #    - name: Print when errors
-  #      ansible.builtin.debug:
-  #        msg: 'I caught an error, can do stuff here to fix it, :-)'
+  
 
 
-#   - name: Download and Extract mongod 
-#     ansible.builtin.include_role:
-#      name: common
-#      tasks_from: download
-# #community.mongodb.mongodb_shell module – Run commands via the MongoDB shell.
-# #
-#   - name: Injecting the MongoDB Catalogue schema
-#     community.mongodb.mongodb_shell:
-#       file: "/tmp/{{COMPONENT}}-main/{{ item }}.js"
-#       idempotent: yes
-#     loop:
-#       - catalogue
-#       - users
+  - name: Download and Extract {{COMPONENT}} schema 
+    ansible.builtin.include_role:
+     name: common
+     tasks_from: download
 
 
 
-  # - name: Injecting the MongoDB User schema
-  #   community.mongodb.mongodb_shell:
-  #    file: "/tmp/{{COMPONENT}}-main/users.js"
-  #    idempotent: yes
+  - name: Injecting the  Catalogue schema
+    community.mongodb.mongodb_shell:
+      file: "/tmp/{{COMPONENT}}-main/{{ item }}.js"
+      idempotent: yes
+    loop:
+      - catalogue
+      - users
+
+
+
