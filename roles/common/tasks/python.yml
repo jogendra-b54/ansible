@@ -35,6 +35,10 @@
       line: gid = {{OUT.group}}
 
 
+- name: Installing {{COMPONENT}} dependencies
+  ansible.builtin.pip:
+    requirements: /home/{{APPUSER}}/{{COMPONENT}}/requirements.txt
+    executable:  pip3
 #  - name: Configuring Service 
 #    ansible.builtin.include_role:
 #      name: common
