@@ -62,5 +62,5 @@
       login_user: root
       login_password: RoboShop@1 
 
-- name: Configuring Node name Repo
+  - name: Configuring Node name Repo
     ansible.builtin.shell: set-hostname {{ COMPONENT }}-{{ENV}}
