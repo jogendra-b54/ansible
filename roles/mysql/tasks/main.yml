@@ -18,11 +18,6 @@
       state: started
       enabled: true
 
-  - name: Fetch the log file from the remote node
-    ansible.builtin.slurp:
-      src: /var/log/mysqld.log
-    register: mysql_pwd_log
-
 
 # Rescue and Blocks work together ; Tasks in rescue will only be excuted if the task in the block fails
   - name : Validate the Default password
