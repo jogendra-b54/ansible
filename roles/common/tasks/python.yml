@@ -26,9 +26,7 @@
   ansible.builtin.shell: id roboshop
   register: OUTPUT
 
-- name: Just printing the output
-  ansible.builtin.debug: 
-    msg : "{{OUTPUT}}"
+
 
 
 #  - name: Generating artifact with npm install

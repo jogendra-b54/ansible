@@ -4,3 +4,8 @@
    ansible.builtin.user:
      name: "{{ APPUSER }}"
      comment: Roboshop Application user 
+   register: OUT
+
+ - name: Just printing the output
+   ansible.builtin.debug: 
+    msg : "{{OUT}}"
