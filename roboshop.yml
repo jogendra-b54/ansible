@@ -2,7 +2,9 @@
   hosts: "{{COMPONENT}}"
   become: yes
   roles:
-     - '{{ COMPONENT }}'
+
+    with_items:
+        - "{{ COMPONENT }}"
 
 
 # - name: Playbook to configure roboshop project
