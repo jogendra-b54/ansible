@@ -21,8 +21,7 @@
       dest: /usr/share/nginx/html/
       remote_src: yes
 
-  - name: configuring Node name Repo
-    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
+
   
 
 # if the source you are trying to copy on the remote machine , ensure to give the remote_src=yes      
@@ -31,14 +30,14 @@
     ansible.builtin.template:
       src: roboshop.conf
       dest: /etc/nginx/default.d/roboshop.conf
-       
+    notify: Restarting Nginx 
 
  #   notify: Retarting Nginx 
 
   - name: Starting {{COMPONENT}}
     ansible.builtin.systemd:
       name: nginx
-      state: restarted
+      state: started
       enabled: true
 
   # - name: Restarting nginx
