@@ -23,5 +23,3 @@
       enabled: true
 
 
-  - name: configuring Node name 
-    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}

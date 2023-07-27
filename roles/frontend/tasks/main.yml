@@ -43,5 +43,5 @@
   # - name: Restarting nginx
   #   ansible.builtin.shell: systemctl start nginx 
       
-  - name: Configuring Node name Repo
-    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
+  # - name: Configuring Node name Repo
+  #   ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
