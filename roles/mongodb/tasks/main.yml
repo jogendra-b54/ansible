@@ -24,7 +24,7 @@
       enabled: true
 
 
-  - name: Download and Extract Mongod schema
+  - name: Download and Extracting the {{COMPONENT}} schema
     ansible.builtin.include_role:
      name: common
      tasks_from: download
