@@ -2,7 +2,17 @@
   hosts: "{{COMPONENT}}"
   become: yes
   roles:
-    - "{{COMPONENT}}"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\mongodb\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\catalogue\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\cart\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\frontend\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\mysql\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\payment\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\rabbitmq\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\redis\vars\main.yml"
+    - role:  "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\shipping\vars\main.yml"
+    - role : "D:\DEVOPS-MANU VERMA\batch54\ansible\roles\user\vars\main.yml"
+
 
 # - name: Playbook to configure roboshop project
 #   hosts: "{{ COMPONENT }}"
