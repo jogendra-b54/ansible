@@ -1,10 +1,9 @@
 - name: Playbook to configure roboshop project
   hosts: "{{COMPONENT}}"
-  tasks:
-   become: yes
-   roles:
+  become: yes
+  roles:
 
-    with_items:
+    loop:
         - "{{ COMPONENT }}"
 
 
