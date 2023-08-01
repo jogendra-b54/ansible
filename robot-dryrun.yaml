@@ -41,6 +41,7 @@
 - name: Run Role to Test
   hosts: launched
   become: True
+  ansible_become: true 
   gather_facts: Yes
   tasks:
     - name: set the facts per host
@@ -53,7 +54,6 @@
             name: "{{COMPONENT}}"
       always:
         - name: Terminate instances that were previously launched
-          ansible_become: True
           delegate_to: 127.0.0.1
           amazon.aws.ec2:
             state: 'absent'
