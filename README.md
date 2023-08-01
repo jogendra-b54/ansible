@@ -144,6 +144,15 @@ By default Ansible will look in each directory within a role for a main.yml file
 
     meta/main.yml - metadata for the role, including role dependencies and optional Galaxy metadata such as platforms supported.
 
+## Ansible-pull ( Prefer using this when your infra is dynamic)
+```
+    $ ansible-pull -U https://github.com/jogendra-b54/ansible.git roboshop-pull.yml -e COMPONENT=mongodb -e ENV=dev
+
+
+    PS: Ensure the node has ansible installed
+```
+
+
 ## Ansible documentation
 
 https://docs.ansible.com/ansible/latest/index.html
