@@ -53,7 +53,7 @@
             name: "{{COMPONENT}}"
       always:
         - name: Terminate instances that were previously launched
-          ansible_become: yes
+          ansible_become: false
           delegate_to: 127.0.0.1
           amazon.aws.ec2:
             state: 'absent'
