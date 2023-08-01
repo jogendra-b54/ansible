@@ -5,7 +5,7 @@ pipeline {
     }
     parameters {
          string(name: 'COMPONENT', defaultValue: 'mongodb', description: 'Enter the name of the component')
-
+    }
     stages {
         stage('Ansible Dry Run'){
             steps{
