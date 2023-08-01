@@ -11,7 +11,7 @@ pipeline {
             steps{
                 sh '''
                 
-                ansible-playbook robot-dryrun.yaml -e COMPONENT=${COMPONENT} -e ansible_user=centos -e ansible_password=${SSHCRED} -e ENV=dev 
+                ansible-playbook robot-dryrun.yaml -e COMPONENT=${COMPONENT} -e ansible_user=centos -e ansible_password=${SSH_CRED} -e ENV=dev 
 
                 '''
             }
