@@ -40,7 +40,6 @@
 
 - name: Run Role to Test
   hosts: launched
-  become: True
   ansible_become: true 
   gather_facts: Yes
   tasks:
