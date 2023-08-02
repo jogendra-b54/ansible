@@ -22,6 +22,7 @@ pipeline {
             }	
         }
         stage('Ansible Dry Run'){
+           when { branch pattern: "PR-.*", comparator: "REGEXP"}	
             steps{
                 sh '''
                 
