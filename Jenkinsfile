@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Ansible Code Scan'){
             steps{
+                sh "env"
                 sh "echo Code Scan Completed"
             }
         }
