@@ -12,7 +12,7 @@ pipeline {
                 sh "echo Code Scan Completed"
             }
         }
-        
+       
 
         stage('Ansible Dry Run'){
             steps{
