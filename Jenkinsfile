@@ -7,6 +7,18 @@ pipeline {
          string(name: 'COMPONENT', defaultValue: 'mongodb', description: 'Enter the name of the component')
     }
     stages {
+        stage('Ansible Code Scan'){
+            steps{
+                sh "echo Code Scan Completed"
+            }
+        }
+         stage('Ansible Lint checks'){
+            when { branch pattern: "feature-.*, comparator: "REGEXP"}
+            steps{
+                sh "echo Lint checks completed"
+            }
+        }
+
         stage('Ansible Dry Run'){
             steps{
                 sh '''
@@ -16,5 +28,12 @@ pipeline {
                 '''
             }
         }
+
+        stage('Promoting Code to PROD Branch'){
+            steps{
+                sh "echo merging the featues branch to PROD Branch"
+            }
+        }
+
     }
 }
