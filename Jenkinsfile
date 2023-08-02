@@ -8,18 +8,21 @@ pipeline {
     }
     stages {
         stage('Ansible Code Scan'){
-            steps {
+            steps{
                 sh "echo Code Scan Completed"
             }
         }
-        stage('Ansible Lint Checks') {	
+       
+         stage('Ansible Lint Checks') {	
             when { branch pattern: "feature-.*", comparator: "REGEXP"}	
-            steps {	
+            steps {
+                sh  "env"
+                sh  "echo Running against the feature branch whose name is ${GIT_BRANCH}"		
                 sh  "echo Lint Checks Completed"	
             }	
         }
-
         stage('Ansible Dry Run'){
+           when { branch pattern: "PR-.*", comparator: "REGEXP"}	
             steps{
                 sh '''
                 
@@ -30,6 +33,9 @@ pipeline {
         }
 
         stage('Promoting Code to PROD Branch'){
+            when {
+                branch 'main'
+            }
             steps{
                 sh "echo merging the featues branch to PROD Branch"
             }
