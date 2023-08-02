@@ -12,7 +12,12 @@ pipeline {
                 sh "echo Code Scan Completed"
             }
         }
-       
+        stage('Ansible Lint Checks') {	
+            when { branch pattern: "feature-.*", comparator: "REGEXP"}	
+            steps {	
+                sh  "echo Lint Checks Completed"	
+            }	
+        }
 
         stage('Ansible Dry Run'){
             steps{
