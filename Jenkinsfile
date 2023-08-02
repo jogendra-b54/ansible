@@ -8,13 +8,13 @@ pipeline {
     }
     stages {
         stage('Ansible Code Scan'){
-            steps{
+            steps {
                 sh "echo Code Scan Completed"
             }
         }
          stage('Ansible Lint checks'){
-            when { branch pattern: "feature-.*, comparator: "REGEXP"}
-            steps{
+            when { branch pattern: "feature-.*", comparator: "REGEXP"}
+            steps {
                 sh "echo Lint checks completed"
             }
         }
