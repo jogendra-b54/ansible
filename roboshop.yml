@@ -8,7 +8,7 @@
 
 
 - name: Playbook to configure roboshop project
-  hosts: "{{ COMPONENT }}"
   become: yes
+  hosts: "{{ COMPONENT }}"
   roles:
     - "{{ COMPONENT }}"
