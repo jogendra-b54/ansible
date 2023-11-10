@@ -41,11 +41,11 @@
 #       name: Restart nginx
 #       service: name=nginx state=restarted
 
-  # - name: Starting {{COMPONENT}}
-  #   ansible.builtin.systemd:
-  #     name: nginx
-  #     state: started
-  #     enabled: true
+  - name: Starting {{COMPONENT}}
+    ansible.builtin.systemd:
+      name: nginx
+      state: started
+      enabled: true
 
   # - name: Restarting nginx
   #   ansible.builtin.shell: systemctl start nginx 
