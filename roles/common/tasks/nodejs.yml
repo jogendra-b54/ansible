@@ -17,7 +17,7 @@
  - name: Downloading the .pem file needed for node js component
    ansible.builtin.get_url:  
       url: https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem  
-      dest: "/home/{{APPUSER}}"
+      dest: "/home/{{APPUSER}}/global-bundle.pem"
  
 
  - name: Download and Extracting the {{ COMPONENT }} 
