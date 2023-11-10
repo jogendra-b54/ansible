@@ -32,20 +32,27 @@
       dest: /etc/nginx/default.d/roboshop.conf
     notify: Restarting Nginx 
 
- #   notify: Retarting Nginx 
+  - name: Copying the nginx config
+    ansible.builtin.template:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+    notify: Retarting Nginx
 
-  - name : started {{COMPONENT}}
-    ansible.builtin.shell: systemctl start nginx
+  
+ 
+
+#  - name : started {{COMPONENT}}
+#    ansible.builtin.shell: systemctl start nginx
 
 #  - handlers:
 #       name: Restart nginx
 #       service: name=nginx state=restarted
 
-  - name: Starting {{COMPONENT}}
+  - name: Starting nginx 
     ansible.builtin.systemd:
-      name: nginx
-      state: started
-      enabled: true
+     name: nginx 
+     state: started
+     enabled: true
 
   # - name: Restarting nginx
   #   ansible.builtin.shell: systemctl start nginx 
