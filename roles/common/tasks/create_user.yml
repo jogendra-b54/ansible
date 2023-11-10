@@ -2,7 +2,7 @@
 
  - name: Creating App user for {{COMPONENT}}-{{ENV}} server
    ansible.builtin.user:
-     name: "{{ APPUSER }}"
+     name: "{{APPUSER}}"
      comment: Roboshop Application user 
    register: OUT
 
