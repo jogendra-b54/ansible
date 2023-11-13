@@ -25,11 +25,6 @@
      name: common
      tasks_from: download_from_nexus
 
- - name: Generating artifact with npm install
-   community.general.npm:
-     path: /home/{{APPUSER}}/{{COMPONENT}}/
-
-
  - name: Configuring Service 
    ansible.builtin.include_role:
      name: common
