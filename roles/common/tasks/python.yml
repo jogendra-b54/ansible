@@ -19,7 +19,7 @@
 - name: Download and Extracting the {{ COMPONENT }} 
   ansible.builtin.include_role:
      name: common
-     tasks_from: download
+     tasks_from: download_from_nexus
 
 
 - name: Updating the UID in the {{COMPONENT}}.ini file
