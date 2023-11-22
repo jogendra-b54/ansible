@@ -22,10 +22,10 @@
   # you can use the "args" chdir instead of using cd /home/{{APPUSER}}/{COMPONENT} &&  mvn clean package
   #   args: 
   #        chdir: somedir /
- - name: Generating {{COMPONENT}} artifacts 
-   ansible.builtin.shell: mvn clean package  &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
-   args:
-     chdir: /home/{{APPUSER}}/{{COMPONENT}}/ 
+#  - name: Generating {{COMPONENT}} artifacts 
+#    ansible.builtin.shell: mvn clean package  &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+#    args:
+#      chdir: /home/{{APPUSER}}/{{COMPONENT}}/ 
 
 
  - name: Configuring Service 
