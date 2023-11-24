@@ -1,3 +1,4 @@
 COMPONENT: frontend
 APPUSER: roboshop
 LOGLOCATION: /var/log/nginx/access.log
+LOGTYPE: raw
