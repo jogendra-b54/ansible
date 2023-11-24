@@ -1,5 +1,5 @@
 - name : Configuring the repo
-  ansible.builtin.shell: sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+  ansible.builtin.shell: sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch 
 
 
 - name: Copying the Elastic Repo
