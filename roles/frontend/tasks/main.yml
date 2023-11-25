@@ -43,6 +43,12 @@
      name: elk
      tasks_from: filebeat 
 
+  - name: Restarting Nginx 
+    ansible.builtin.systemd:
+      name: nginx
+      state: restarted
+      enabled: true
+
 
   - name: Starting nginx 
     ansible.builtin.systemd:
