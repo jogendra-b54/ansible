@@ -156,3 +156,13 @@ By default Ansible will look in each directory within a role for a main.yml file
 ## Ansible documentation
 
 https://docs.ansible.com/ansible/latest/index.html
+
+
+
+ # GROK DEBUGGER:
+
+ Ref :https://grokdebugger.com/
+
+ GROK Pattern For Frontend :
+
+ %{HTTPDATE:log_timestamp}%{SPACE}%{IP:source_ip}%{SPACE}%{WORD:http_method}%{SPACE}%{PATH:http_path}%{SPACE}%{WORD}/%{NUMBER}%{SPACE}%{NUMBER:http_status:int}%{SPACE}%{NUMBER:bytes_sent}%{SPACE}%{NUMBER:response_time:float}
