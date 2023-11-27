@@ -43,6 +43,10 @@
      name: elk
      tasks_from: filebeat 
 
-
+ - name: Installing Node Exporter 
+   ansible.builtin.include_role:
+     name: prometheus
+     tasks_from: node_exporter
+     
  - name: configuring Node name Repo
    ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}

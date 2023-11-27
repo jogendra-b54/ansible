@@ -43,11 +43,16 @@
      name: elk
      tasks_from: filebeat 
 
-  - name: Restarting Nginx 
-    ansible.builtin.systemd:
-      name: nginx
-      state: restarted
-      enabled: true
+  - name: Installing Node Exporter 
+    ansible.builtin.include_role:
+     name: prometheus
+     tasks_from: node_exporter
+     
+  # - name: Restarting Nginx 
+  #   ansible.builtin.systemd:
+  #     name: nginx
+  #     state: restarted
+  #     enabled: true
 
 
   - name: Starting nginx 
