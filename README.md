@@ -173,3 +173,7 @@ https://docs.ansible.com/ansible/latest/index.html
  ceil( 100 - ( avg by(instance_id)(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100))
 
 ```
+# Prom Query to Fetch Average Memory Utilization
+```
+100 * (( node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes ) / node_memory_MemTotal_bytes)
+```
